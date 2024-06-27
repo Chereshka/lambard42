@@ -1,3 +1,18 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {      
+      "@assets/*":     ["./src/assets/*"],
+      "@UI/*":         ["./src/UI/*"],
+      "@store/*":      ["./src/store/*"],
+      "@navigation/*": ["./src/navigation/*"],
+      "@screen/*":     ["./src/screen/*"],
+      "@styles":       ["./src/styles"],
+      "@utils/*":      ["./src/utils/*"]
+    }
+  }
 }
