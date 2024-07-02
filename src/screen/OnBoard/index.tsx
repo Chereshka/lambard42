@@ -1,9 +1,8 @@
-import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useCallback, useMemo } from 'react'
+import { SafeAreaView, StyleSheet } from 'react-native'
+import React, { useCallback } from 'react'
 
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 
-import { COLORS } from '@styles'
 
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
 
@@ -16,6 +15,7 @@ export const ON_BOARD_NAVIGATION_SETTINGS: NativeStackNavigationOptions = {
 }
 
 import wSize from '@utils/dimensions';
+import { COLORS } from '@styles';
 
 const { sWidth, sHeight } = wSize
 
@@ -26,7 +26,7 @@ const OnBoard = () => {
   const data = [<First />, <Second />, <Third />, <Four />, <Five />];
 
 
-  const renderItem = useCallback(({ item, index }: CarouselRenderItemInfo<React.JSX.Element>) => {
+  const renderItem = useCallback(({ item }: CarouselRenderItemInfo<React.JSX.Element>) => {
     return item;
   }, []);
 
@@ -36,20 +36,18 @@ const OnBoard = () => {
       <Carousel
         ref={carouselRef}
         loop={false}
-        width={sWidth }
+        width={sWidth}
         height={sHeight}
         panGestureHandlerProps={{
           activeOffsetX: [-10, 10],
         }}
         style={{
-          overflow: 'visible'
-          // width: width,
-          // height: COMPONENT_HEGHT,          
+          overflow: 'visible',
+          backgroundColor: 'green'          
         }}
         data={data}
         renderItem={renderItem}
-        scrollAnimationDuration={500}
-      // onSnapToItem={onIndexChanged}
+        scrollAnimationDuration={500}      
       />
     </SafeAreaView>
   )
@@ -60,7 +58,7 @@ export default OnBoard
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.SUPPORTIVE_BLUE,
+    backgroundColor: COLORS.SUPPORTIVE_BLUE,    
     justifyContent: 'center',
     alignItems: 'center'
   }
